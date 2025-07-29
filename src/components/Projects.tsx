@@ -151,36 +151,17 @@ const Projects = () => {
                   </div>
                 </div>
 
-                {/* Tech Stack */}
-                <div className="space-y-3">
-                  <h4 className="font-medium text-foreground text-sm flex items-center space-x-2">
-                    <div className="w-1 h-4 bg-gradient-accent rounded-full"></div>
-                    <span>Tech Stack</span>
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag, tagIndex) => (
-                      <Badge 
-                        key={tag} 
-                        variant="secondary" 
-                        className="text-xs bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground transition-all duration-300 hover:scale-105"
-                        style={{ animationDelay: `${tagIndex * 0.1}s` }}
-                      >
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
 
                 {/* Action Buttons */}
                 <div className="flex space-x-3 pt-2">
                   <Button 
                     variant="gradient" 
                     size="sm" 
-                    onClick={() => window.open('https://github.com/Aanjaneya-27', '_blank')}
+                    onClick={() => window.open(`https://github.com/Aanjaneya-27/${project.title.toLowerCase().replace(/\s+/g, '-')}`, '_blank')}
                     className="flex-1 group/btn"
                   >
                     <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
-                    View Code - github.com/Aanjaneya-27
+                    View Code
                   </Button>
                 </div>
               </div>

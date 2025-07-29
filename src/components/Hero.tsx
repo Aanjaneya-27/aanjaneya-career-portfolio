@@ -116,11 +116,7 @@ const Hero = () => {
                 size="lg" 
                 className="shadow-medium hover:shadow-large group"
                 onClick={() => {
-                  // Create download link for resume
-                  const link = document.createElement('a');
-                  link.href = '/resume.pdf'; // You'll need to add your resume PDF to the public folder
-                  link.download = 'Aanjaneya_Dikhit_Resume.pdf';
-                  link.click();
+                  window.open('/mnt/data/Aanjaneya_Dikhit_CV_Updated.pdf', '_blank');
                 }}
               >
                 <Download className="w-4 h-4 mr-2 group-hover:translate-y-1 transition-transform" />
