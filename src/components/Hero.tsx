@@ -115,9 +115,16 @@ const Hero = () => {
                 variant="secondary" 
                 size="lg" 
                 className="shadow-medium hover:shadow-large group"
+                onClick={() => {
+                  // Create download link for resume
+                  const link = document.createElement('a');
+                  link.href = '/resume.pdf'; // You'll need to add your resume PDF to the public folder
+                  link.download = 'Aanjaneya_Dikhit_Resume.pdf';
+                  link.click();
+                }}
               >
                 <Download className="w-4 h-4 mr-2 group-hover:translate-y-1 transition-transform" />
-                Resume
+                Download Resume
               </Button>
             </div>
             
@@ -139,35 +146,13 @@ const Hero = () => {
             </div>
           </div>
           
-          {/* Right content - Profile picture */}
+          {/* Right content - Streamlined design */}
           <div className="flex justify-center lg:justify-end animate-slide-in-right">
-            <div className="relative group">
-              {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-secondary rounded-3xl blur-3xl opacity-30 group-hover:opacity-50 transition-opacity duration-300 animate-glow-pulse"></div>
-              
-              {/* Main image container */}
-              <div className="relative">
-                <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden shadow-large group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
-                  <img 
-                    src={profilePicture}
-                    alt="Aanjaneya Dikhit"
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                </div>
-                
-                {/* Floating decorative elements */}
-                <div className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-accent rounded-2xl opacity-20 animate-particle-rotate"></div>
-                <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-gradient-secondary rounded-full opacity-15 animate-particle-float"></div>
-                
-                {/* Badge */}
-                <div className="absolute bottom-4 left-4 bg-card/90 backdrop-blur-sm rounded-xl px-4 py-2 shadow-medium">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm font-medium text-foreground">Open to Work</span>
-                  </div>
-                </div>
-              </div>
+            <div className="relative">
+              {/* Floating decorative elements */}
+              <div className="w-80 h-80 lg:w-96 lg:h-96 bg-gradient-hero rounded-3xl shadow-large opacity-20 animate-particle-float"></div>
+              <div className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-accent rounded-2xl opacity-20 animate-particle-rotate"></div>
+              <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-gradient-secondary rounded-full opacity-15 animate-particle-float"></div>
             </div>
           </div>
         </div>

@@ -172,15 +172,6 @@ const Contact = () => {
               </div>
             </Card>
 
-            <Card className="p-6 bg-gradient-secondary shadow-medium animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
-              <div className="flex items-center space-x-3">
-                <MapPin className="w-5 h-5 text-secondary-foreground" />
-                <div>
-                  <p className="font-semibold text-secondary-foreground">Location</p>
-                  <p className="text-secondary-foreground/80 text-sm">Available for Remote Work Worldwide</p>
-                </div>
-              </div>
-            </Card>
           </div>
 
           {/* Contact Form */}

@@ -41,7 +41,8 @@ const About = () => {
     ],
     database: [
       { name: "SQL Server", level: 87 },
-      { name: "MySQL", level: 80 }
+      { name: "Node.js", level: 75 },
+      { name: "RESTful APIs", level: 80 }
     ]
   };
 
@@ -104,7 +105,7 @@ const About = () => {
                 { number: "7+", label: "Months Experience", icon: TrendingUp },
                 { number: "10+", label: "Projects Completed", icon: Code2 },
                 { number: "2", label: "Internships", icon: Award },
-                { number: "100%", label: "Client Satisfaction", icon: GraduationCap }
+                { number: "15+", label: "Technologies Used", icon: GraduationCap }
               ].map((stat, index) => (
                 <Card key={index} className="p-4 bg-gradient-card shadow-soft hover:shadow-medium transition-all duration-300 group">
                   <div className="text-center space-y-2">
@@ -192,7 +193,7 @@ const About = () => {
                   <div className="p-2 bg-gradient-accent rounded-lg">
                     <Code2 className="w-5 h-5 text-white" />
                   </div>
-                  <h4 className="font-semibold text-foreground">Database Management</h4>
+                  <h4 className="font-semibold text-foreground">Additional Technologies</h4>
                 </div>
                 <div className="space-y-4">
                   {skills.database.map((skill, index) => (
