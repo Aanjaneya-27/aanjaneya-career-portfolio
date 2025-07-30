@@ -104,7 +104,11 @@ const Projects = () => {
                   
                   <div className="flex space-x-2">
                     <button 
-                      onClick={() => window.open('https://github.com/Aanjaneya-27', '_blank')}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        window.open('https://github.com/Aanjaneya-27', '_blank', 'noopener,noreferrer');
+                      }}
                       className="p-2 bg-muted/50 hover:bg-muted rounded-lg hover:scale-110 transition-all duration-300 group/btn"
                     >
                       <Github className="w-4 h-4 text-muted-foreground group-hover/btn:text-foreground" />
@@ -157,7 +161,11 @@ const Projects = () => {
                   <Button 
                     variant="gradient" 
                     size="sm" 
-                    onClick={() => window.open('https://github.com/Aanjaneya-27', '_blank')}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      window.open('https://github.com/Aanjaneya-27', '_blank', 'noopener,noreferrer');
+                    }}
                     className="flex-1 group/btn"
                   >
                     <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />
