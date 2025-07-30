@@ -116,7 +116,12 @@ const Hero = () => {
                 size="lg" 
                 className="shadow-medium hover:shadow-large group"
                 onClick={() => {
-                  window.open('/mnt/data/Aanjaneya_Dikhit_CV_Updated.pdf', '_blank');
+                  const link = document.createElement('a');
+                  link.href = '/mnt/data/Aanjaneya_Dikhit_CV_Updated.pdf';
+                  link.download = 'Aanjaneya_Dikhit_CV_Updated.pdf';
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
                 }}
               >
                 <Download className="w-4 h-4 mr-2 group-hover:translate-y-1 transition-transform" />

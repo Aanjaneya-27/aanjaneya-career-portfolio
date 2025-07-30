@@ -9,13 +9,13 @@ const Projects = () => {
 
   const projects = [
     {
-      title: "SparkleCart",
-      description: "Full-featured e-commerce platform built with ASP.NET MVC, featuring user authentication, product catalog, shopping cart, and order management system with secure payment processing.",
+      title: "BrandBOX-Clone App",
+      description: "A full-stack e-commerce web application clone using HTML, CSS, and JavaScript.",
       icon: ShoppingCart,
       gradient: "bg-gradient-primary",
-      tags: ["ASP.NET MVC", "SQL Server", "Entity Framework", "Bootstrap"],
-      features: ["User Authentication", "Shopping Cart", "Payment Integration", "Admin Panel"],
-      stats: { views: "2.5K", stars: "45", commits: "120+" },
+      tags: ["HTML", "CSS", "JavaScript"],
+      features: ["Responsive Design", "Product Catalog", "User Interface", "Modern Styling"],
+      stats: { views: "1.2K", stars: "28", commits: "65+" },
       category: "E-commerce"
     },
     {
