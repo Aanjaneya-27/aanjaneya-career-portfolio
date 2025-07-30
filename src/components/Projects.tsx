@@ -157,7 +157,7 @@ const Projects = () => {
                   <Button 
                     variant="gradient" 
                     size="sm" 
-                    onClick={() => window.open(`https://github.com/Aanjaneya-27/${project.title.toLowerCase().replace(/\s+/g, '-')}`, '_blank')}
+                    onClick={() => window.open('https://github.com/Aanjaneya-27', '_blank')}
                     className="flex-1 group/btn"
                   >
                     <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" />

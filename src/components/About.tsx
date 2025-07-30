@@ -104,8 +104,7 @@ const About = () => {
               {[
                 { number: "7+", label: "Months Experience", icon: TrendingUp },
                 { number: "10+", label: "Projects Completed", icon: Code2 },
-                { number: "2", label: "Internships", icon: Award },
-                { number: "15+", label: "Technologies Used", icon: GraduationCap }
+                { number: "2", label: "Internships", icon: Award }
               ].map((stat, index) => (
                 <Card key={index} className="p-4 bg-gradient-card shadow-soft hover:shadow-medium transition-all duration-300 group">
                   <div className="text-center space-y-2">
