@@ -1,73 +1,90 @@
-# Welcome to your Lovable project
-
 ## Project info
+🌐 Live Portfolio Website :- https://aanjaneya-career-profile.online/  
+📧 dikhitaanjaneyat03@gmail.com 
+📱 +91-6371114935
 
-**URL**: https://aanjaneya-career-profile.online/
+---
 
-## How can I edit this code?
+## 🚀 About Me
 
-There are several ways of editing your application.
+Hi, I'm **Aanjaneya Dikhit**, a passionate Full-Stack Developer with a specialization in **.NET Core**, **Angular**, **Entity Framework**, and **SQL Server**. I love turning ideas into scalable software solutions.
 
-**Use Lovable**
+- 💻 Strong background in C#, ASP.NET Core, and Angular
+- 🧠 Always curious about new tech and best practices
+- 🛠️ Focused on performance, code quality, and clean architecture
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/099dfff3-9f5d-4345-a8fa-30ab1532cb47) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Tech Stack
 
-**Use your preferred IDE**
+### Languages & Frameworks
+- C# / .NET Core
+- Angular
+- JavaScript / TypeScript
+- HTML / CSS / Bootstrap
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Database & Tools
+- SQL Server
+- Entity Framework Core
+- Git & GitHub
+- Visual Studio, VS Code
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## 💼 Professional Experience
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 🌟 ACR Software – Intern  
+*Jan 2024 – Mar 2024*  
+Worked on building modules using .NET APIs and Angular for web-based platforms.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### 🌟 Web-Bocket – Intern  
+*Feb 2023 – May 2023*  
+Focused on creating dynamic frontend UIs and integrating REST APIs.
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## 🧩 What I Offer
 
-**Edit a file directly in GitHub**
+- 🔧 **Frontend Development**: Angular-based responsive UI development.
+- 💡 **Backend Development**: .NET Core API development with EF Core.
+- 🗄️ **Database Integration**: SQL Server design, queries, and optimization.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## 🌟 Featured Projects
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### 1. BrandBOX - Clone App  
+E-commerce clone application using Angular & .NET Core.  
+⭐ CRUD Operations, JWT Authentication, Routing, Admin Panel
 
-## What technologies are used for this project?
+### 2. Covid Assessment Form  
+Medical form app built with Angular & .NET Core API for real-time assessment.
 
-This project is built with:
+### 3. Food Boxxer  
+Food delivery dashboard UI using Angular.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### 4. Fruit Slice Game  
+Simple interactive game project using JS and HTML5 Canvas.
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/099dfff3-9f5d-4345-a8fa-30ab1532cb47) and click on Share -> Publish.
+## 📬 Contact Me
 
-## Can I connect a custom domain to my Lovable project?
+**Let's work together!**  
+You can reach out via:
 
-Yes, you can!
+- 📞 Phone: +91-6371114935 
+- 📧 Email: dikhitaanjaneyat03@gmail.com 
+- 💼 LinkedIn: [linkedin.com/in/aanjaneya-dikhit](https://linkedin.com/in/aanjaneya-dikhit)  
+- 🐙 GitHub: [github.com/Aanjaneya-27](https://github.com/Aanjaneya-27)
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 📁 Quick Access
+
+| Section         | Link                             |
+|----------------|----------------------------------|            
+| Portfolio Live | [Visit Now](https://aanjaneya-career-profile.online/) |
+| GitHub         | [My GitHub](https://github.com/Aanjaneya-27) |
+
+
