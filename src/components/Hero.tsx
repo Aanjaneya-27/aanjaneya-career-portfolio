@@ -28,6 +28,35 @@ const Hero = () => {
     }
   };
 
+  const handleDownloadResume = () => {
+    // Create a temporary link to download or view the resume
+    const resumeUrl = '/Aanjaneya_Dikhit_CV_Updated.pdf';
+    
+    // Try to open the resume, fallback to a message if file doesn't exist
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    link.download = 'Aanjaneya_Dikhit_Resume.pdf';
+    link.target = '_blank';
+    
+    // Check if file exists by trying to fetch it
+    fetch(resumeUrl, { method: 'HEAD' })
+      .then(response => {
+        if (response.ok) {
+          // File exists, trigger download
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        } else {
+          // File doesn't exist, show alert
+          alert('Resume file not found. Please upload your resume PDF to the public folder as "Aanjaneya_Dikhit_CV_Updated.pdf"');
+        }
+      })
+      .catch(() => {
+        // Network error or file doesn't exist
+        alert('Resume file not found. Please upload your resume PDF to the public folder as "Aanjaneya_Dikhit_CV_Updated.pdf"');
+      });
+  };
+
   // Floating particles
   const particles = Array.from({ length: 6 }, (_, i) => ({
     id: i,
@@ -125,11 +154,7 @@ const Hero = () => {
                 variant="secondary" 
                 size="lg" 
                 className="shadow-medium hover:shadow-large group"
-                onClick={() => {
-                  // Create a temporary URL for the resume - you'll need to upload your resume to the public folder
-                  const resumeUrl = '/Aanjaneya_Dikhit_CV_Updated.pdf';
-                  window.open(resumeUrl, '_blank');
-                }}
+                onClick={handleDownloadResume}
               >
                 <Download className="w-4 h-4 mr-2 group-hover:translate-y-1 transition-transform" />
                 Download Resume
