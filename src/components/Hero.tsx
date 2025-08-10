@@ -18,6 +18,16 @@ const Hero = () => {
     window.open(url, '_blank');
   };
 
+  const handleScrollToExplore = () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   // Floating particles
   const particles = Array.from({ length: 6 }, (_, i) => ({
     id: i,
@@ -156,10 +166,13 @@ const Hero = () => {
         </div>
         
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="flex flex-col items-center space-y-2 text-muted-foreground">
+        <div 
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer hover:scale-110 transition-all duration-300 group"
+          onClick={handleScrollToExplore}
+        >
+          <div className="flex flex-col items-center space-y-2 text-muted-foreground group-hover:text-primary">
             <span className="text-sm">Scroll to explore</span>
-            <ArrowDown className="w-5 h-5" />
+            <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
           </div>
         </div>
       </div>
