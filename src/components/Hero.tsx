@@ -165,7 +165,7 @@ const Hero = () => {
               {[
                 { icon: Github, url: 'https://github.com/Aanjaneya-27', color: 'hover:bg-purple-100 hover:text-purple-600' },
                 { icon: Linkedin, url: 'https://www.linkedin.com/in/aanjaneya-dikhit', color: 'hover:bg-blue-100 hover:text-blue-600' },
-                { icon: Mail, url: 'mailto:dikhitaanjaneyat03@gmail.com', color: 'hover:bg-green-100 hover:text-green-600' }
+                { icon: Mail, url: 'https://mail.google.com/mail/?view=cm&fs=1&to=dikhitaanjaneyat03@gmail.com&su=Hello%20Aanjaneya&body=Hi%20Aanjaneya,%0D%0A%0D%0AI%20would%20like%20to%20discuss...', color: 'hover:bg-green-100 hover:text-green-600' }
               ].map((social, index) => (
                 <button 
                   key={index}
