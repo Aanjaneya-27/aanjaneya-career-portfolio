@@ -30,6 +30,7 @@ const About = () => {
       { name: "CSS", level: 90 },
       { name: "Bootstrap", level: 85 },
       { name: "JavaScript", level: 88 },
+      { name: "TypeScript", level: 85 },
       { name: "jQuery", level: 82 },
       { name: "Angular", level: 85 }
     ],
