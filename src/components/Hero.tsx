@@ -68,8 +68,9 @@ const Hero = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-hero opacity-5"></div>
+      {/* Enhanced Animated Background */}
+      <div className="absolute inset-0 bg-gradient-hero opacity-10 animate-glow-pulse"></div>
+      <div className="absolute inset-0 bg-gradient-glow opacity-5 animate-float-gentle"></div>
       
       {/* Floating Particles */}
       {particles.map((particle) => (
@@ -88,16 +89,16 @@ const Hero = () => {
         </div>
       ))}
 
-      {/* Interactive cursor effect */}
+      {/* Enhanced interactive cursor effect */}
       <div 
-        className="fixed pointer-events-none z-10 opacity-20 transition-transform duration-300"
+        className="fixed pointer-events-none z-10 opacity-30 transition-all duration-500"
         style={{
-          left: mousePosition.x - 100,
-          top: mousePosition.y - 100,
+          left: mousePosition.x - 150,
+          top: mousePosition.y - 150,
           transform: `translate(-50%, -50%)`,
         }}
       >
-        <div className="w-48 h-48 bg-gradient-secondary rounded-full blur-3xl"></div>
+        <div className="w-72 h-72 bg-gradient-glow rounded-full blur-3xl animate-pulse-glow"></div>
       </div>
       
       <div className="container mx-auto px-6 py-20 relative z-10">

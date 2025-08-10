@@ -38,25 +38,30 @@ All colors MUST be HSL.
 
     --radius: 1rem;
 
-    /* Custom gradients and design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(270 65% 65%), hsl(300 60% 70%));
-    --gradient-secondary: linear-gradient(135deg, hsl(45 95% 68%), hsl(35 90% 65%));
-    --gradient-accent: linear-gradient(135deg, hsl(185 85% 65%), hsl(200 75% 60%));
-    --gradient-hero: linear-gradient(135deg, hsl(45 95% 68%), hsl(185 85% 65%));
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(240 5% 97%));
+    /* Enhanced gradients and design tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(270 65% 65%), hsl(300 60% 70%), hsl(320 55% 75%));
+    --gradient-secondary: linear-gradient(135deg, hsl(45 95% 68%), hsl(35 90% 65%), hsl(25 85% 62%));
+    --gradient-accent: linear-gradient(135deg, hsl(185 85% 65%), hsl(200 75% 60%), hsl(215 70% 58%));
+    --gradient-hero: linear-gradient(135deg, hsl(270 65% 65%) 0%, hsl(185 85% 65%) 50%, hsl(45 95% 68%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(240 5% 98%) 50%, hsl(240 5% 97%) 100%);
+    --gradient-glow: linear-gradient(135deg, hsl(270 65% 65% / 0.2), hsl(185 85% 65% / 0.2));
     
-    /* Shadows */
-    --shadow-soft: 0 4px 20px hsl(230 15% 15% / 0.08);
-    --shadow-medium: 0 8px 30px hsl(230 15% 15% / 0.12);
-    --shadow-large: 0 15px 40px hsl(230 15% 15% / 0.15);
+    /* Enhanced shadows with color */
+    --shadow-soft: 0 4px 20px hsl(270 65% 65% / 0.08);
+    --shadow-medium: 0 8px 30px hsl(270 65% 65% / 0.12);
+    --shadow-large: 0 15px 40px hsl(270 65% 65% / 0.15);
+    --shadow-glow: 0 0 40px hsl(270 65% 65% / 0.3);
+    --shadow-elegant: 0 10px 30px -10px hsl(270 65% 65% / 0.4);
     
-    /* Animations */
+    /* Enhanced animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --transition-elastic: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     
     /* Particle animations */
-    --particle-float: particle-float 6s ease-in-out infinite;
-    --particle-rotate: particle-rotate 20s linear infinite;
+    --particle-float: particle-float 8s ease-in-out infinite;
+    --particle-rotate: particle-rotate 25s linear infinite;
+    --particle-drift: particle-drift 12s ease-in-out infinite;
 
     --sidebar-background: 0 0% 98%;
 
@@ -121,5 +126,52 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  
+  /* Smooth scrolling for all elements */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gradient-primary rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gradient-secondary;
+  }
+}
+
+@layer utilities {
+  /* Glass morphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Enhanced hover effects */
+  .hover-lift {
+    @apply transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-large;
+  }
+  
+  /* Text gradient effects */
+  .text-gradient {
+    @apply bg-gradient-primary bg-clip-text text-transparent;
+  }
+  
+  /* Floating animation for cards */
+  .card-float {
+    @apply animate-float-gentle hover:animate-none;
   }
 }

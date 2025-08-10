@@ -9,18 +9,19 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-medium hover:shadow-large hover:scale-105",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-medium hover:shadow-large hover:scale-105 hover:-translate-y-0.5",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-medium hover:shadow-large",
         outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+          "border-2 border-input bg-background/50 backdrop-blur-sm hover:bg-accent hover:text-accent-foreground shadow-soft hover:shadow-medium hover:scale-105 hover:border-primary/50",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-soft hover:shadow-medium hover:scale-105",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-soft hover:shadow-medium hover:scale-105 hover:-translate-y-0.5",
+        ghost: "hover:bg-accent hover:text-accent-foreground hover:scale-105",
         link: "text-primary underline-offset-4 hover:underline",
-        gradient: "bg-gradient-primary text-white shadow-medium hover:shadow-large hover:scale-105 border-0",
-        hero: "bg-gradient-hero text-foreground shadow-medium hover:shadow-large hover:scale-105 font-semibold",
-        contact: "bg-gradient-accent text-white shadow-medium hover:shadow-large hover:scale-105",
+        gradient: "bg-gradient-primary text-white shadow-medium hover:shadow-glow hover:scale-105 hover:-translate-y-1 border-0",
+        hero: "bg-gradient-hero text-white shadow-large hover:shadow-glow hover:scale-105 hover:-translate-y-1 font-semibold border-0",
+        contact: "bg-gradient-accent text-white shadow-medium hover:shadow-glow hover:scale-105 hover:-translate-y-0.5",
+        premium: "bg-gradient-primary text-white shadow-elegant hover:shadow-glow hover:scale-110 hover:-translate-y-2 animate-pulse-glow",
       },
       size: {
         default: "h-10 px-4 py-2",
