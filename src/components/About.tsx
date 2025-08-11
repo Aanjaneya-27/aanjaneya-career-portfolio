@@ -1,4 +1,3 @@
-import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { GraduationCap, Award, Code2, TrendingUp } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
@@ -69,11 +68,11 @@ const About = () => {
   );
 
   return (
-    <section id="about" className="py-16 sm:py-20 lg:py-24 bg-muted/30" ref={sectionRef}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="section-padding bg-muted/30" ref={sectionRef}>
+      <div className="container mx-auto container-padding">
         <div className="text-center mb-12 sm:mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">
-            About <span className="text-gradient-rainbow">Me</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4 text-balance">
+            About <span className="text-gradient-primary">Me</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Learn more about my journey, education, and technical expertise
@@ -85,7 +84,7 @@ const About = () => {
           {/* Bio Section */}
           <div className="space-y-8 animate-slide-in-left">
             <div>
-              <h3 className="text-2xl font-display font-semibold text-foreground mb-6">My Story</h3>
+              <h3 className="text-2xl font-heading font-semibold text-foreground mb-6">My Story</h3>
               <div className="prose prose-lg text-muted-foreground space-y-4">
                 <p className="leading-relaxed">
                   Passionate and highly motivated .NET Developer with a strong foundational understanding of C#, 
@@ -107,24 +106,24 @@ const About = () => {
                 { number: "10+", label: "Projects Completed", icon: Code2 },
                 { number: "2", label: "Internships", icon: Award }
               ].map((stat, index) => (
-                <Card key={index} className="p-4 bg-gradient-card shadow-soft hover:shadow-glow-primary transition-all duration-500 group hover-float magnetic">
+                <div key={index} className="card-clean card-hover p-4 group">
                   <div className="text-center space-y-2">
                     <stat.icon className="w-6 h-6 text-primary mx-auto group-hover:scale-110 transition-transform" />
                     <div className="text-2xl font-bold text-foreground">{stat.number}</div>
                     <div className="text-xs text-muted-foreground">{stat.label}</div>
                   </div>
-                </Card>
+                </div>
               ))}
             </div>
 
             {/* Education */}
-            <Card className="p-6 bg-gradient-card shadow-soft hover:shadow-glow-accent transition-all duration-500 group hover-float glass-subtle">
+            <div className="card-clean card-hover p-6 group">
               <div className="flex items-start space-x-4">
                 <div className="p-3 bg-gradient-primary rounded-lg group-hover:scale-110 transition-transform">
                   <GraduationCap className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="font-display font-semibold text-lg text-foreground mb-3">Education</h4>
+                  <h4 className="font-heading font-semibold text-lg text-foreground mb-3">Education</h4>
                   <div className="space-y-4">
                     <div className="p-4 bg-muted/50 rounded-lg">
                       <p className="font-medium text-foreground">B.Tech in Computer Science</p>
@@ -145,15 +144,15 @@ const About = () => {
                   </div>
                 </div>
               </div>
-            </Card>
+            </div>
           </div>
 
           {/* Skills Section */}
           <div className="space-y-8 animate-slide-in-right">
-            <h3 className="text-2xl font-display font-semibold text-foreground mb-6">Technical Skills</h3>
+            <h3 className="text-2xl font-heading font-semibold text-foreground mb-6">Technical Skills</h3>
             
             {/* Frontend Skills */}
-            <Card className="p-6 bg-gradient-card shadow-soft hover:shadow-glow-secondary transition-all duration-500 glass-subtle hover-glow">
+            <div className="card-clean card-hover p-6">
               <div className="space-y-4">
                 <div className="flex items-center space-x-2 mb-4">
                   <div className="p-2 bg-gradient-secondary rounded-lg">
@@ -167,10 +166,10 @@ const About = () => {
                   ))}
                 </div>
               </div>
-            </Card>
+            </div>
 
             {/* Backend Skills */}
-            <Card className="p-6 bg-gradient-card shadow-soft hover:shadow-glow-primary transition-all duration-500 glass-subtle hover-glow">
+            <div className="card-clean card-hover p-6">
               <div className="space-y-4">
                 <div className="flex items-center space-x-2 mb-4">
                   <div className="p-2 bg-gradient-primary rounded-lg">
@@ -184,10 +183,10 @@ const About = () => {
                   ))}
                 </div>
               </div>
-            </Card>
+            </div>
 
             {/* Database Skills */}
-            <Card className="p-6 bg-gradient-card shadow-soft hover:shadow-glow-accent transition-all duration-500 glass-subtle hover-glow">
+            <div className="card-clean card-hover p-6">
               <div className="space-y-4">
                 <div className="flex items-center space-x-2 mb-4">
                   <div className="p-2 bg-gradient-accent rounded-lg">
@@ -201,20 +200,20 @@ const About = () => {
                   ))}
                 </div>
               </div>
-            </Card>
+            </div>
 
             {/* Learning Badge */}
-            <Card className="p-6 bg-gradient-aurora shadow-soft hover:shadow-glow-secondary transition-all duration-500 group magnetic shimmer">
+            <div className="card-clean card-hover p-6 bg-gradient-secondary group">
               <div className="flex items-center space-x-4">
                 <Award className="w-8 h-8 text-secondary-foreground group-hover:scale-110 transition-transform" />
                 <div>
-                  <h4 className="font-display font-semibold text-lg text-secondary-foreground">Always Learning</h4>
+                  <h4 className="font-heading font-semibold text-lg text-secondary-foreground">Always Learning</h4>
                   <p className="text-secondary-foreground/80">
                     Continuously expanding my skills and staying updated with the latest technologies
                   </p>
                 </div>
               </div>
-            </Card>
+            </div>
           </div>
         </div>
       </div>
