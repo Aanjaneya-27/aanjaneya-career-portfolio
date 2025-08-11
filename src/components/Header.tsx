@@ -33,7 +33,7 @@ const Header = () => {
         ? 'bg-background/95 backdrop-blur-xl border-b border-border shadow-soft' 
         : 'bg-transparent'
     }`}>
-      <div className="container mx-auto px-6 py-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <nav className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-3 animate-slide-in-left">
@@ -83,7 +83,7 @@ const Header = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-border shadow-large animate-fade-in-up">
-            <div className="container mx-auto px-6 py-6">
+            <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-6">
               <div className="space-y-4">
                 {menuItems.map((item, index) => (
                   <button 

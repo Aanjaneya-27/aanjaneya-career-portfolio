@@ -69,9 +69,9 @@ const About = () => {
   );
 
   return (
-    <section id="about" className="py-20 bg-muted/30" ref={sectionRef}>
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-fade-in">
+    <section id="about" className="py-16 sm:py-20 lg:py-24 bg-muted/30" ref={sectionRef}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16 animate-fade-in">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
             About <span className="bg-gradient-primary bg-clip-text text-transparent">Me</span>
           </h2>
@@ -81,7 +81,7 @@ const About = () => {
           <div className="mt-6 w-24 h-1 bg-gradient-primary mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Bio Section */}
           <div className="space-y-8 animate-slide-in-left">
             <div>

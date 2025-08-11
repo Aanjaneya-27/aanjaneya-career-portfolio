@@ -34,9 +34,9 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+    <section id="services" className="py-16 sm:py-20 lg:py-24 bg-muted/30">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
             What I <span className="bg-gradient-primary bg-clip-text text-transparent">Offer</span>
           </h2>
@@ -45,7 +45,7 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
           {services.map((service, index) => (
             <Card 
               key={index} 

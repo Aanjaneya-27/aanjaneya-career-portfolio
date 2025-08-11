@@ -104,13 +104,13 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-muted/30 relative overflow-hidden">
+    <section id="contact" className="py-16 sm:py-20 lg:py-24 bg-muted/30 relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-primary opacity-5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-accent opacity-5 rounded-full blur-3xl"></div>
       
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16 animate-fade-in">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-12 sm:mb-16 animate-fade-in">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Let's <span className="bg-gradient-primary bg-clip-text text-transparent">Connect</span>
           </h2>
@@ -120,7 +120,7 @@ const Contact = () => {
           <div className="mt-6 w-24 h-1 bg-gradient-primary mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
           {/* Contact Information */}
           <div className="space-y-8 animate-slide-in-left">
             <div>

@@ -6,8 +6,8 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-foreground text-background py-12">
-      <div className="container mx-auto px-6">
+    <footer className="bg-foreground text-background py-8 sm:py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-center">
           {/* Social Links */}
           <div className="flex justify-center space-x-4">

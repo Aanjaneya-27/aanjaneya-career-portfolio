@@ -55,9 +55,9 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-20">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16 animate-fade-in">
+    <section id="projects" className="py-16 sm:py-20 lg:py-24">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16 animate-fade-in">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Featured <span className="bg-gradient-primary bg-clip-text text-transparent">Projects</span>
           </h2>
@@ -67,7 +67,7 @@ const Projects = () => {
           <div className="mt-6 w-24 h-1 bg-gradient-primary mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-7xl mx-auto">
           {projects.map((project, index) => (
             <Card 
               key={index} 
