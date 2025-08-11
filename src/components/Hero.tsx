@@ -111,13 +111,13 @@ const Hero = () => {
                 <span className="text-sm text-muted-foreground">Available for new opportunities</span>
               </div>
               
-              <h1 className="text-5xl lg:text-7xl font-bold text-foreground leading-tight">
+              <h1 className="text-5xl lg:text-7xl font-display font-bold text-foreground leading-tight animate-bounce-in">
                 Hey, I'm{" "}
-                <span className="bg-gradient-primary bg-clip-text text-transparent animate-glow-pulse">
+                <span className="text-gradient-rainbow animate-text-shimmer bg-gradient-to-r bg-[length:200%_auto]">
                   Aanjaneya
                 </span>
               </h1>
-              <h2 className="text-2xl lg:text-4xl font-semibold text-muted-foreground mt-4">
+              <h2 className="text-2xl lg:text-4xl font-display font-semibold text-gradient-cosmic mt-4 animate-slide-up-bounce" style={{ animationDelay: '0.3s' }}>
                 Full-Stack .NET Developer
               </h2>
               <div className="flex items-center space-x-2 mt-2">
@@ -128,17 +128,17 @@ const Hero = () => {
               </div>
             </div>
             
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-lg animate-slide-in-left">
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-lg animate-slide-up-bounce font-body" style={{ animationDelay: '0.5s' }}>
               Passionate .NET Developer with strong expertise in C#, ASP.NET Core, Angular, and SQL Server. 
               I enjoy creating user-centric, delightful, and impactful digital experiences.
             </p>
             
-            <div className="flex flex-wrap gap-4 animate-slide-in-left" style={{ animationDelay: '0.2s' }}>
+            <div className="flex flex-wrap gap-4 animate-slide-up-bounce" style={{ animationDelay: '0.7s' }}>
               <Button 
                 variant="hero" 
                 size="lg" 
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="group shadow-large hover:shadow-xl"
+                className="group magnetic hover:shadow-glow-primary hover:scale-110 transition-all duration-500 shimmer"
               >
                 Get In Touch
                 <ArrowDown className="w-4 h-4 ml-2 group-hover:translate-y-1 transition-transform" />
@@ -147,14 +147,14 @@ const Hero = () => {
                 variant="outline" 
                 size="lg" 
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                className="shadow-medium hover:shadow-large border-2 hover:border-primary/50"
+                className="glass-subtle hover:glass-strong hover:shadow-glow-accent border-2 hover:border-primary/50 transition-all duration-500"
               >
                 View My Work
               </Button>
               <Button 
                 variant="secondary" 
                 size="lg" 
-                className="shadow-medium hover:shadow-large group"
+                className="hover:shadow-glow-secondary group magnetic transition-all duration-500"
                 onClick={handleDownloadResume}
               >
                 <Download className="w-4 h-4 mr-2 group-hover:translate-y-1 transition-transform" />
@@ -171,7 +171,7 @@ const Hero = () => {
                 <button 
                   key={index}
                   onClick={() => openLink(social.url)}
-                  className={`p-4 bg-card rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300 hover:scale-110 group ${social.color}`}
+                  className={`p-4 bg-card rounded-2xl shadow-soft hover:shadow-glow-primary transition-all duration-500 magnetic group glass-subtle hover:glass-strong ${social.color}`}
                   style={{ animationDelay: `${0.6 + index * 0.1}s` }}
                 >
                   <social.icon className="w-6 h-6 text-foreground group-hover:scale-110 transition-transform" />

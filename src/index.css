@@ -78,6 +78,26 @@ All colors MUST be HSL.
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Enhanced typography */
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    
+    /* Advanced gradients */
+    --gradient-rainbow: linear-gradient(135deg, hsl(270 65% 65%) 0%, hsl(300 70% 70%) 25%, hsl(320 75% 75%) 50%, hsl(340 80% 80%) 75%, hsl(10 85% 70%) 100%);
+    --gradient-cosmic: linear-gradient(135deg, hsl(240 100% 10%) 0%, hsl(270 65% 65%) 50%, hsl(300 70% 70%) 100%);
+    --gradient-aurora: linear-gradient(135deg, hsl(185 85% 65%) 0%, hsl(270 65% 65%) 30%, hsl(45 95% 68%) 60%, hsl(320 75% 75%) 100%);
+    
+    /* Enhanced shadows */
+    --shadow-glow-primary: 0 0 50px hsl(270 65% 65% / 0.4);
+    --shadow-glow-secondary: 0 0 30px hsl(45 95% 68% / 0.3);
+    --shadow-glow-accent: 0 0 40px hsl(185 85% 65% / 0.35);
+    --shadow-multi: 0 4px 20px hsl(270 65% 65% / 0.1), 0 8px 40px hsl(270 65% 65% / 0.08), 0 16px 80px hsl(270 65% 65% / 0.06);
+    
+    /* Backdrop filters */
+    --backdrop-blur-subtle: blur(8px);
+    --backdrop-blur-medium: blur(16px);
+    --backdrop-blur-strong: blur(24px);
   }
 
   .dark {
@@ -126,7 +146,15 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-body);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Enhanced typography */
+  .font-display {
+    font-family: var(--font-display);
   }
   
   /* Smooth scrolling for all elements */
@@ -150,19 +178,45 @@ All colors MUST be HSL.
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-gradient-secondary;
   }
+  
+  /* Shimmer keyframe animation */
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
 }
 
 @layer utilities {
-  /* Glass morphism effect */
+  /* Glass morphism effects */
   .glass {
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    backdrop-filter: var(--backdrop-blur-medium);
     border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: var(--backdrop-blur-strong);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .glass-subtle {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: var(--backdrop-blur-subtle);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
   
   /* Enhanced hover effects */
   .hover-lift {
-    @apply transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-large;
+    @apply transition-all duration-500 hover:scale-105 hover:-translate-y-3 hover:shadow-glow;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-glow-primary;
+  }
+  
+  .hover-float {
+    @apply transition-all duration-700 hover:-translate-y-2 hover:shadow-multi;
   }
   
   /* Text gradient effects */
@@ -170,8 +224,66 @@ All colors MUST be HSL.
     @apply bg-gradient-primary bg-clip-text text-transparent;
   }
   
+  .text-gradient-rainbow {
+    background: var(--gradient-rainbow);
+    @apply bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-cosmic {
+    background: var(--gradient-cosmic);
+    @apply bg-clip-text text-transparent;
+  }
+  
   /* Floating animation for cards */
   .card-float {
     @apply animate-float-gentle hover:animate-none;
+  }
+  
+  /* Magnetic effect */
+  .magnetic {
+    @apply transition-transform duration-300 ease-out;
+  }
+  
+  .magnetic:hover {
+    @apply scale-110;
+  }
+  
+  /* Shimmer effect */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+  
+  /* Pulse glow effect */
+  .pulse-glow {
+    @apply animate-pulse-glow;
+  }
+  
+  /* Parallax scrolling */
+  .parallax {
+    transform-style: preserve-3d;
+  }
+  
+  /* Scrollbar styling */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-muted/30;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gradient-primary rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-gradient-secondary;
   }
 }
