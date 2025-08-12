@@ -9,38 +9,37 @@ const Hero = () => {
     window.open(url, '_blank');
   };
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
     const resumeUrl = '/Aanjaneya_Dikhit_CV_Updated.pdf';
-    
-    fetch(resumeUrl, { method: 'HEAD' })
-      .then(response => {
-        if (response.ok) {
-          const link = document.createElement('a');
-          link.href = resumeUrl;
-          link.download = 'Aanjaneya_Dikhit_Resume.pdf';
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-          
-          toast({
-            title: "Resume Downloaded",
-            description: "Thank you for your interest!",
-          });
-        } else {
-          toast({
-            title: "Resume not found",
-            description: "Please contact me directly for my latest resume.",
-            variant: "destructive",
-          });
-        }
-      })
-      .catch(() => {
-        toast({
-          title: "Download failed",
-          description: "Please try again or contact me directly.",
-          variant: "destructive",
-        });
+
+    try {
+      const response = await fetch(resumeUrl);
+      if (!response.ok) throw new Error('Resume not found');
+
+      const blob = await response.blob();
+      if (!blob || blob.size === 0) throw new Error('Empty file');
+
+      const blobUrl = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = 'Aanjaneya_Dikhit_Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(blobUrl);
+
+      toast({
+        title: 'Resume downloaded',
+        description: 'Thank you for your interest!',
       });
+    } catch (err) {
+      // Fallback: open in a new tab so user can save manually
+      window.open(resumeUrl, '_blank', 'noopener,noreferrer');
+      toast({
+        title: 'Opened resume',
+        description: 'If it didn\'t download, save it from the new tab.',
+      });
+    }
   };
 
   const handleEmailClick = () => {
