@@ -51,7 +51,7 @@ const Projects = () => {
   ];
 
   const openGithub = () => {
-    window.open('https://github.com/Aanjaneya-27', '_blank');
+    window.open('https://github.com/Aanjaneya-27', '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -71,10 +71,20 @@ const Projects = () => {
           {projects.map((project, index) => (
             <Card 
               key={index} 
-              className="relative overflow-hidden bg-gradient-card shadow-soft hover:shadow-xl transition-all duration-500 hover:scale-105 group animate-scale-in"
+              className="relative overflow-hidden bg-gradient-card shadow-soft hover:shadow-xl transition-all duration-500 hover:scale-105 group animate-scale-in cursor-pointer"
               style={{ animationDelay: `${index * 0.2}s` }}
               onMouseEnter={() => setHoveredProject(index)}
               onMouseLeave={() => setHoveredProject(null)}
+              onClick={() => openGithub()}
+              role="link"
+              tabIndex={0}
+              aria-label={`Open GitHub profile from ${project.title}`}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  openGithub();
+                }
+              }}
             >
               {/* Background Pattern */}
               <div className="absolute inset-0 opacity-5">
