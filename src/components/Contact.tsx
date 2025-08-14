@@ -68,6 +68,18 @@ const Contact = () => {
     });
   };
 
+  const handleEmailClick = () => {
+    const contactForm = document.querySelector('#contact form');
+    if (contactForm) {
+      contactForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Focus on the first input field
+      const nameInput = document.querySelector('#name') as HTMLInputElement;
+      if (nameInput) {
+        setTimeout(() => nameInput.focus(), 500);
+      }
+    }
+  };
+
   const contactInfo = [
     {
       icon: Phone,
@@ -75,15 +87,17 @@ const Contact = () => {
       value: "+91 6371114935",
       href: "tel:+916371114935",
       gradient: "bg-gradient-primary",
-      description: "Call me anytime"
+      description: "Call me anytime",
+      onClick: null
     },
     {
       icon: Mail,
       label: "Email",
       value: "dikhitaanjaneyat03@gmail.com",
-      href: "mailto:dikhitaanjaneyat03@gmail.com",
+      href: "#",
       gradient: "bg-gradient-accent",
-      description: "Drop me a line"
+      description: "Drop me a line",
+      onClick: handleEmailClick
     },
     {
       icon: Linkedin,
@@ -133,29 +147,53 @@ const Contact = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
               {contactInfo.map((info, index) => (
-                <a
-                  key={index}
-                  href={info.href}
-                  target={info.href.startsWith('http') ? '_blank' : undefined}
-                  rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="block group animate-scale-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <Card className="p-6 bg-gradient-card shadow-soft hover:shadow-large transition-all duration-300 group-hover:scale-105 border-l-4 border-l-transparent group-hover:border-l-primary">
-                    <div className="flex items-center space-x-4">
-                      <div className={`p-3 ${info.gradient} rounded-xl group-hover:scale-110 transition-all duration-300 shadow-medium group-hover:shadow-large`}>
-                        <info.icon className="w-5 h-5 text-white" />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between">
-                          <p className="font-semibold text-foreground group-hover:text-primary transition-colors">{info.label}</p>
+                info.onClick ? (
+                  <button
+                    key={index}
+                    onClick={info.onClick}
+                    className="block group animate-scale-in text-left w-full"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <Card className="p-6 bg-gradient-card shadow-soft hover:shadow-large transition-all duration-300 group-hover:scale-105 border-l-4 border-l-transparent group-hover:border-l-primary">
+                      <div className="flex items-center space-x-4">
+                        <div className={`p-3 ${info.gradient} rounded-xl group-hover:scale-110 transition-all duration-300 shadow-medium group-hover:shadow-large`}>
+                          <info.icon className="w-5 h-5 text-white" />
                         </div>
-                        <p className="text-muted-foreground text-sm mb-1">{info.value}</p>
-                        <p className="text-xs text-muted-foreground/70">{info.description}</p>
+                        <div className="flex-1">
+                          <div className="flex items-center justify-between">
+                            <p className="font-semibold text-foreground group-hover:text-primary transition-colors">{info.label}</p>
+                          </div>
+                          <p className="text-muted-foreground text-sm mb-1">{info.value}</p>
+                          <p className="text-xs text-muted-foreground/70">{info.description}</p>
+                        </div>
                       </div>
-                    </div>
-                  </Card>
-                </a>
+                    </Card>
+                  </button>
+                ) : (
+                  <a
+                    key={index}
+                    href={info.href}
+                    target={info.href.startsWith('http') ? '_blank' : undefined}
+                    rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="block group animate-scale-in"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <Card className="p-6 bg-gradient-card shadow-soft hover:shadow-large transition-all duration-300 group-hover:scale-105 border-l-4 border-l-transparent group-hover:border-l-primary">
+                      <div className="flex items-center space-x-4">
+                        <div className={`p-3 ${info.gradient} rounded-xl group-hover:scale-110 transition-all duration-300 shadow-medium group-hover:shadow-large`}>
+                          <info.icon className="w-5 h-5 text-white" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center justify-between">
+                            <p className="font-semibold text-foreground group-hover:text-primary transition-colors">{info.label}</p>
+                          </div>
+                          <p className="text-muted-foreground text-sm mb-1">{info.value}</p>
+                          <p className="text-xs text-muted-foreground/70">{info.description}</p>
+                        </div>
+                      </div>
+                    </Card>
+                  </a>
+                )
               ))}
             </div>
 
