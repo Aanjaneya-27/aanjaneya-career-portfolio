@@ -65,15 +65,23 @@ const Hero = () => {
           {/* Main heading */}
           <div className="animate-enter-delay space-y-4">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-foreground tracking-tight text-balance">
-              Hi, I'm{" "}
-              <span className="text-gradient-primary relative">
+              <span className="inline-block animate-fade-in" style={{ animationDelay: '0.2s' }}>Hi, I'm</span>{" "}
+              <span className="text-gradient-primary relative inline-block animate-scale-in story-link" style={{ animationDelay: '0.4s' }}>
                 Aanjaneya Dikhit
                 <Sparkles className="absolute -top-2 -right-2 w-6 h-6 text-primary/60 animate-pulse" />
+                {/* Animated underline */}
+                <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-primary rounded-full transform scale-x-0 animate-[scale-x_0.8s_ease-out_0.6s_forwards] origin-left"></div>
               </span>
             </h1>
             
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-heading font-medium text-muted-foreground">
-              Full-Stack .NET Developer
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-heading font-medium text-muted-foreground relative animate-fade-in" style={{ animationDelay: '0.8s' }}>
+              <span className="relative inline-block">
+                Full-Stack .NET Developer
+                {/* Typing cursor effect */}
+                <span className="absolute -right-1 top-0 w-0.5 h-full bg-primary animate-pulse" style={{ animationDelay: '1.2s' }}></span>
+                {/* Highlight background */}
+                <div className="absolute inset-0 bg-primary/10 rounded transform scale-x-0 animate-[scale-x_0.6s_ease-out_1.0s_forwards] origin-left -z-10"></div>
+              </span>
             </h2>
             
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
