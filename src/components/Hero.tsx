@@ -66,41 +66,21 @@ const Hero = () => {
           <div className="animate-enter-delay space-y-4">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-foreground tracking-tight text-balance">
               <span className="inline-block animate-fade-in" style={{ animationDelay: '0.2s' }}>Hi, I'm</span>{" "}
-              <span className="text-gradient-primary relative inline-block">
-                {"Aanjaneya Dikhit".split("").map((char, index) => (
-                  <span
-                    key={index}
-                    className="inline-block animate-bounce hover:animate-pulse"
-                    style={{
-                      animationDelay: `${0.5 + index * 0.1}s`,
-                      animationDuration: '0.6s',
-                      animationFillMode: 'both'
-                    }}
-                  >
-                    {char === " " ? "\u00A0" : char}
-                  </span>
-                ))}
-                <Sparkles className="absolute -top-2 -right-2 w-6 h-6 text-primary/60 animate-spin" style={{ animationDuration: '3s' }} />
+              <span className="text-gradient-primary relative inline-block animate-scale-in" style={{ animationDelay: '0.4s' }}>
+                <span className="inline-block hover:animate-pulse transition-all duration-300 hover:scale-105">
+                  Aanjaneya Dikhit
+                </span>
+                <Sparkles className="absolute -top-2 -right-2 w-6 h-6 text-primary/60 animate-pulse" />
+                {/* Animated underline */}
+                <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-primary rounded-full animate-[slideIn_1s_ease-out_0.8s_forwards] transform scale-x-0 origin-left"></div>
               </span>
             </h1>
             
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-heading font-medium text-muted-foreground overflow-hidden">
-              <span className="inline-block animate-fade-in relative" style={{ animationDelay: '1.8s' }}>
-                {"Full-Stack .NET Developer".split("").map((char, index) => (
-                  <span
-                    key={index}
-                    className="inline-block animate-fade-in hover:text-primary transition-colors duration-300"
-                    style={{
-                      animationDelay: `${1.8 + index * 0.05}s`,
-                      transform: 'translateY(20px)',
-                      animationFillMode: 'forwards'
-                    }}
-                  >
-                    {char === " " ? "\u00A0" : char}
-                  </span>
-                ))}
-                <span className="inline-block w-0.5 h-6 bg-primary ml-1 animate-pulse" style={{ animationDelay: '3.5s' }}></span>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-heading font-medium text-muted-foreground animate-fade-in" style={{ animationDelay: '0.6s' }}>
+              <span className="inline-block hover:text-primary transition-colors duration-300">
+                Full-Stack .NET Developer
               </span>
+              <span className="inline-block w-0.5 h-6 bg-primary ml-1 animate-pulse" style={{ animationDelay: '1s' }}></span>
             </h2>
             
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
