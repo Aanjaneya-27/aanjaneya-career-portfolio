@@ -103,7 +103,7 @@ const Contact = () => {
       icon: Linkedin,
       label: "LinkedIn",
       value: "aanjaneya-dikhit",
-      href: "https://www.linkedin.com/in/aanjaneya-dikhit",
+      href: "https://www.linkedin.com/in/aanjaneya-dikhit-5b316a37b",
       gradient: "bg-gradient-secondary",
       description: "Let's connect professionally"
     },

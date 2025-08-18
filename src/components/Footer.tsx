@@ -19,7 +19,7 @@ const Footer = () => {
               <Github className="w-5 h-5" />
             </button>
             <button 
-              onClick={() => openLink('https://www.linkedin.com/in/aanjaneya-dikhit')}
+              onClick={() => openLink('https://www.linkedin.com/in/aanjaneya-dikhit-5b316a37b')}
               className="p-3 bg-background/10 rounded-full hover:bg-background/20 transition-colors"
               aria-label="LinkedIn Profile"
             >

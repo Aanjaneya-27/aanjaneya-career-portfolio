@@ -124,7 +124,7 @@ const Hero = () => {
               },
               { 
                 icon: Linkedin, 
-                url: 'https://www.linkedin.com/in/aanjaneya-dikhit', 
+                url: 'https://www.linkedin.com/in/aanjaneya-dikhit-5b316a37b', 
                 label: 'LinkedIn',
                 color: 'hover:text-blue-600'
               },
