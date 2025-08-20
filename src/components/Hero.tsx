@@ -66,15 +66,8 @@ const Hero = () => {
           <div className="animate-enter-delay space-y-4">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-foreground tracking-tight text-balance">
               <span className="inline-block animate-fade-in" style={{ animationDelay: '0.2s' }}>Hi, I'm</span>{" "}
-              <span className="text-gradient-primary relative inline-block animate-scale-in cursor-pointer" style={{ animationDelay: '0.4s' }}>
-                <span className="inline-block hover:scale-110 hover:rotate-1 transition-all duration-300 hover:text-primary-glow">
-                  Aanjaneya Dikhit
-                </span>
-                <Sparkles className="absolute -top-2 -right-2 w-6 h-6 text-primary/60 animate-pulse hover:animate-spin hover:text-primary transition-all duration-300" />
-                {/* Animated underline that grows on hover */}
-                <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-primary rounded-full animate-[slideIn_1s_ease-out_0.8s_forwards] transform scale-x-0 origin-left hover:h-2 hover:shadow-lg transition-all duration-300"></div>
-                {/* Glow effect on hover */}
-                <div className="absolute inset-0 bg-primary/10 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300 -z-10 blur-sm"></div>
+              <span className="text-gradient-primary inline-block animate-scale-in" style={{ animationDelay: '0.4s' }}>
+                Aanjaneya Dikhit
               </span>
             </h1>
             
