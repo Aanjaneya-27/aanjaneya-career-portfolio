@@ -72,10 +72,10 @@ const Hero = () => {
             </h1>
             
             <h2 className="text-xl sm:text-2xl lg:text-3xl font-heading font-medium text-muted-foreground animate-fade-in" style={{ animationDelay: '0.6s' }}>
-              <span className="inline-block hover:text-primary transition-colors duration-300">
+              <span className="inline-block hover:text-primary transition-all duration-500 hover:scale-105 animate-scale-in" style={{ animationDelay: '0.8s' }}>
                 Full-Stack .NET Developer
               </span>
-              <span className="inline-block w-0.5 h-6 bg-primary ml-1 animate-pulse" style={{ animationDelay: '1s' }}></span>
+              <span className="inline-block w-0.5 h-6 bg-primary ml-1 animate-pulse" style={{ animationDelay: '1.2s' }}></span>
             </h2>
             
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
