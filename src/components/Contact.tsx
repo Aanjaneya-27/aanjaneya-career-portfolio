@@ -6,6 +6,7 @@ import { Mail, Phone, Linkedin, Github, MapPin, Send, Clock, CheckCircle } from 
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { sendEmail, type EmailData } from "@/lib/emailjs";
+import { useScrollAnimation, useStaggeredAnimation } from "@/hooks/useScrollAnimation";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,10 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { toast } = useToast();
+
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { ref: contactInfoRef, visibleItems } = useStaggeredAnimation(4, 0.15);
+  const { ref: formRef, isVisible: formVisible } = useScrollAnimation();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -120,24 +125,29 @@ const Contact = () => {
   return (
     <section id="contact" className="py-16 sm:py-20 lg:py-24 bg-muted/30 relative overflow-hidden">
       {/* Background Decoration */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-primary opacity-5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-accent opacity-5 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-primary opacity-5 rounded-full blur-3xl animate-float"></div>
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-accent opacity-5 rounded-full blur-3xl animate-float" style={{animationDelay: '1.5s'}}></div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-12 sm:mb-16 animate-fade-in">
+        <div 
+          ref={titleRef}
+          className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${
+            titleVisible ? 'animate-slide-down opacity-100' : 'opacity-0 -translate-y-10'
+          }`}
+        >
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Let's <span className="bg-gradient-primary bg-clip-text text-transparent">Connect</span>
+            Let's <span className="bg-gradient-primary bg-clip-text text-transparent animate-pulse-glow">Connect</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Ready to collaborate on your next project? I'd love to hear from you!
           </p>
-          <div className="mt-6 w-24 h-1 bg-gradient-primary mx-auto rounded-full"></div>
+          <div className="mt-6 w-24 h-1 bg-gradient-primary mx-auto rounded-full animate-slideIn"></div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
           {/* Contact Information */}
-          <div className="space-y-8 animate-slide-in-left">
-            <div>
+          <div ref={contactInfoRef} className="space-y-8">
+            <div className={`transition-all duration-700 ${visibleItems.includes(0) ? 'animate-slide-in-left opacity-100' : 'opacity-0 -translate-x-10'}`}>
               <h3 className="text-2xl font-semibold text-foreground mb-6">Get in Touch</h3>
               <p className="text-muted-foreground leading-relaxed mb-8">
                 I'm always excited to discuss new opportunities, collaborate on interesting projects, 
@@ -147,90 +157,109 @@ const Contact = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
               {contactInfo.map((info, index) => (
-                info.onClick ? (
-                  <button
-                    key={index}
-                    onClick={info.onClick}
-                    className="block group animate-scale-in text-left w-full"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <Card className="p-6 bg-gradient-card shadow-soft hover:shadow-large transition-all duration-300 group-hover:scale-105 border-l-4 border-l-transparent group-hover:border-l-primary">
-                      <div className="flex items-center space-x-4">
-                        <div className={`p-3 ${info.gradient} rounded-xl group-hover:scale-110 transition-all duration-300 shadow-medium group-hover:shadow-large`}>
-                          <info.icon className="w-5 h-5 text-white" />
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-center justify-between">
-                            <p className="font-semibold text-foreground group-hover:text-primary transition-colors">{info.label}</p>
+                <div
+                  key={index}
+                  className={`transition-all duration-700 ${
+                    visibleItems.includes(index + 1) 
+                      ? 'animate-scale-in opacity-100' 
+                      : 'opacity-0 scale-90'
+                  }`}
+                >
+                  {info.onClick ? (
+                    <button
+                      onClick={info.onClick}
+                      className="block group text-left w-full"
+                    >
+                      <Card className="p-6 bg-gradient-card shadow-soft hover:shadow-large transition-all duration-300 group-hover:scale-105 border-l-4 border-l-transparent group-hover:border-l-primary hover-float hover-glow">
+                        <div className="flex items-center space-x-4">
+                          <div className={`p-3 ${info.gradient} rounded-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-medium group-hover:shadow-large relative`}>
+                            <info.icon className="w-5 h-5 text-white relative z-10" />
+                            <div className="absolute inset-0 bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-xl"></div>
                           </div>
-                          <p className="text-muted-foreground text-sm mb-1">{info.value}</p>
-                          <p className="text-xs text-muted-foreground/70">{info.description}</p>
-                        </div>
-                      </div>
-                    </Card>
-                  </button>
-                ) : (
-                  <a
-                    key={index}
-                    href={info.href}
-                    target={info.href.startsWith('http') ? '_blank' : undefined}
-                    rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="block group animate-scale-in"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <Card className="p-6 bg-gradient-card shadow-soft hover:shadow-large transition-all duration-300 group-hover:scale-105 border-l-4 border-l-transparent group-hover:border-l-primary">
-                      <div className="flex items-center space-x-4">
-                        <div className={`p-3 ${info.gradient} rounded-xl group-hover:scale-110 transition-all duration-300 shadow-medium group-hover:shadow-large`}>
-                          <info.icon className="w-5 h-5 text-white" />
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-center justify-between">
-                            <p className="font-semibold text-foreground group-hover:text-primary transition-colors">{info.label}</p>
+                          <div className="flex-1">
+                            <div className="flex items-center justify-between">
+                              <p className="font-semibold text-foreground group-hover:text-primary transition-colors group-hover:scale-105">
+                                {info.label}
+                              </p>
+                            </div>
+                            <p className="text-muted-foreground text-sm mb-1">{info.value}</p>
+                            <p className="text-xs text-muted-foreground/70">{info.description}</p>
                           </div>
-                          <p className="text-muted-foreground text-sm mb-1">{info.value}</p>
-                          <p className="text-xs text-muted-foreground/70">{info.description}</p>
                         </div>
-                      </div>
-                    </Card>
-                  </a>
-                )
+                      </Card>
+                    </button>
+                  ) : (
+                    <a
+                      href={info.href}
+                      target={info.href.startsWith('http') ? '_blank' : undefined}
+                      rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="block group"
+                    >
+                      <Card className="p-6 bg-gradient-card shadow-soft hover:shadow-large transition-all duration-300 group-hover:scale-105 border-l-4 border-l-transparent group-hover:border-l-primary hover-float hover-glow">
+                        <div className="flex items-center space-x-4">
+                          <div className={`p-3 ${info.gradient} rounded-xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-medium group-hover:shadow-large relative`}>
+                            <info.icon className="w-5 h-5 text-white relative z-10" />
+                            <div className="absolute inset-0 bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-xl"></div>
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center justify-between">
+                              <p className="font-semibold text-foreground group-hover:text-primary transition-colors group-hover:scale-105">
+                                {info.label}
+                              </p>
+                            </div>
+                            <p className="text-muted-foreground text-sm mb-1">{info.value}</p>
+                            <p className="text-xs text-muted-foreground/70">{info.description}</p>
+                          </div>
+                        </div>
+                      </Card>
+                    </a>
+                  )}
+                </div>
               ))}
             </div>
 
             {/* Response Time */}
-            <Card className="p-6 bg-gradient-hero shadow-medium animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-              <div className="flex items-center space-x-4">
-                <div className="p-3 bg-foreground/10 rounded-xl">
-                  <Clock className="w-5 h-5 text-foreground" />
+            <div className={`transition-all duration-700 ${visibleItems.includes(5) ? 'animate-bounce-in opacity-100' : 'opacity-0 scale-50'}`}>
+              <Card className="p-6 bg-gradient-hero shadow-medium hover:shadow-large transition-all duration-300 hover-float">
+                <div className="flex items-center space-x-4">
+                  <div className="p-3 bg-foreground/10 rounded-xl animate-pulse">
+                    <Clock className="w-5 h-5 text-foreground" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">Quick Response Time</p>
+                    <p className="text-muted-foreground text-sm">I typically respond within 24 hours</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-semibold text-foreground">Quick Response Time</p>
-                  <p className="text-muted-foreground text-sm">I typically respond within 24 hours</p>
-                </div>
-              </div>
-            </Card>
-
+              </Card>
+            </div>
           </div>
 
           {/* Contact Form */}
-          <div className="animate-slide-in-right">
-            <Card className="p-8 bg-gradient-card shadow-soft hover:shadow-medium transition-all duration-300 relative overflow-hidden">
+          <div 
+            ref={formRef}
+            className={`transition-all duration-1000 ${
+              formVisible ? 'animate-slide-in-right opacity-100' : 'opacity-0 translate-x-10'
+            }`}
+          >
+            <Card className="p-8 bg-gradient-card shadow-soft hover:shadow-medium transition-all duration-300 relative overflow-hidden hover-glow">
               {/* Success overlay */}
               {isSubmitted && (
                 <div className="absolute inset-0 bg-green-500/10 backdrop-blur-sm flex items-center justify-center z-10 animate-fade-in">
                   <div className="text-center">
-                    <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4 animate-scale-in" />
+                    <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4 animate-bounce-in" />
                     <h4 className="text-xl font-semibold text-foreground mb-2">Message Sent!</h4>
                     <p className="text-muted-foreground">I'll get back to you soon.</p>
                   </div>
                 </div>
               )}
 
-              <h3 className="text-2xl font-semibold text-foreground mb-6">Send a Message</h3>
+              <h3 className="text-2xl font-semibold text-foreground mb-6 hover:text-primary transition-colors">
+                Send a Message
+              </h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                  <div className="group">
+                    <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2 group-hover:text-primary transition-colors">
                       Full Name
                     </label>
                     <Input
@@ -241,13 +270,13 @@ const Contact = () => {
                       onChange={handleInputChange}
                       placeholder="Your full name"
                       required
-                      className="w-full transition-all duration-300 focus:scale-105 focus:shadow-medium"
+                      className="w-full transition-all duration-300 focus:scale-105 focus:shadow-medium hover:shadow-soft"
                       disabled={isSubmitting}
                     />
                   </div>
 
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                  <div className="group">
+                    <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2 group-hover:text-primary transition-colors">
                       Email Address
                     </label>
                     <Input
@@ -258,14 +287,14 @@ const Contact = () => {
                       onChange={handleInputChange}
                       placeholder="your.email@example.com"
                       required
-                      className="w-full transition-all duration-300 focus:scale-105 focus:shadow-medium"
+                      className="w-full transition-all duration-300 focus:scale-105 focus:shadow-medium hover:shadow-soft"
                       disabled={isSubmitting}
                     />
                   </div>
                 </div>
 
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                <div className="group">
+                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2 group-hover:text-primary transition-colors">
                     Message
                   </label>
                   <Textarea
@@ -276,7 +305,7 @@ const Contact = () => {
                     placeholder="Tell me about your project or just say hello!"
                     rows={5}
                     required
-                    className="w-full resize-none transition-all duration-300 focus:scale-105 focus:shadow-medium"
+                    className="w-full resize-none transition-all duration-300 focus:scale-105 focus:shadow-medium hover:shadow-soft"
                     disabled={isSubmitting}
                   />
                 </div>
@@ -285,7 +314,7 @@ const Contact = () => {
                   type="submit" 
                   variant="contact" 
                   size="lg" 
-                  className="w-full gap-2 group relative overflow-hidden"
+                  className="w-full gap-2 group relative overflow-hidden hover:scale-105 transition-all duration-300"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
@@ -295,7 +324,7 @@ const Contact = () => {
                     </>
                   ) : (
                     <>
-                      <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:scale-110 transition-all" />
                       Send Message
                     </>
                   )}
@@ -305,7 +334,7 @@ const Contact = () => {
               </form>
 
               {/* Form decoration */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-primary opacity-5 rounded-full blur-2xl"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-primary opacity-5 rounded-full blur-2xl animate-float"></div>
             </Card>
           </div>
         </div>

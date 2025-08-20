@@ -1,7 +1,12 @@
-import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Code, Database, Globe, Layers } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Services = () => {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { ref: servicesRef, isVisible: servicesVisible } = useScrollAnimation();
+  const { ref: ctaRef, isVisible: ctaVisible } = useScrollAnimation();
+
   const services = [
     {
       icon: Globe,
@@ -36,55 +41,83 @@ const Services = () => {
   return (
     <section id="services" className="py-16 sm:py-20 lg:py-24 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16">
+        <div 
+          ref={titleRef}
+          className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${
+            titleVisible ? 'animate-fade-in-up opacity-100' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
             What I <span className="bg-gradient-primary bg-clip-text text-transparent">Offer</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Comprehensive development services to bring your ideas to life
           </p>
+          <div className="mt-6 w-24 h-1 bg-gradient-primary mx-auto rounded-full animate-slideIn"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
+        <div 
+          ref={servicesRef}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto"
+        >
           {services.map((service, index) => (
-            <Card 
-              key={index} 
-              className="p-8 bg-gradient-card shadow-soft hover:shadow-large transition-all duration-300 hover:scale-105 group"
+            <div
+              key={index}
+              className={`transition-all duration-700 ${
+                servicesVisible 
+                  ? 'animate-scale-in opacity-100' 
+                  : 'opacity-0 scale-95'
+              }`}
+              style={{ 
+                animationDelay: servicesVisible ? `${index * 0.2}s` : '0s' 
+              }}
             >
-              <div className="space-y-6">
-                {/* Icon */}
-                <div className={`inline-flex p-4 ${service.gradient} rounded-2xl group-hover:scale-110 transition-transform duration-300`}>
-                  <service.icon className="w-8 h-8 text-white" />
-                </div>
+              <div className="card-clean card-hover p-8 group hover-float">
+                <div className="space-y-6">
+                  {/* Icon */}
+                  <div className={`inline-flex p-4 ${service.gradient} rounded-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 hover-glow`}>
+                    <service.icon className="w-8 h-8 text-white" />
+                  </div>
 
-                {/* Content */}
-                <div>
-                  <h3 className="text-2xl font-semibold text-foreground mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    {service.description}
-                  </p>
-                </div>
+                  {/* Content */}
+                  <div>
+                    <h3 className="text-2xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+                      {service.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      {service.description}
+                    </p>
+                  </div>
 
-                {/* Features */}
-                <div className="space-y-2">
-                  {service.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-gradient-primary rounded-full"></div>
-                      <span className="text-sm text-muted-foreground">{feature}</span>
-                    </div>
-                  ))}
+                  {/* Features */}
+                  <div className="space-y-2">
+                    {service.features.map((feature, featureIndex) => (
+                      <div 
+                        key={featureIndex} 
+                        className="flex items-center space-x-2 group/feature"
+                      >
+                        <div className="w-2 h-2 bg-gradient-primary rounded-full group-hover/feature:scale-125 transition-transform"></div>
+                        <span className="text-sm text-muted-foreground group-hover/feature:text-foreground transition-colors">
+                          {feature}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <Card className="inline-block p-8 bg-gradient-hero shadow-medium">
-            <h3 className="text-2xl font-semibold text-foreground mb-4">
+        <div 
+          ref={ctaRef}
+          className={`text-center mt-16 transition-all duration-1000 ${
+            ctaVisible ? 'animate-bounce-in opacity-100' : 'opacity-0 scale-50'
+          }`}
+        >
+          <div className="card-clean p-8 bg-gradient-hero shadow-medium hover:shadow-large transition-all duration-300 group hover-float inline-block">
+            <h3 className="text-2xl font-semibold text-foreground mb-4 group-hover:scale-105 transition-transform">
               Ready to Start Your Project?
             </h3>
             <p className="text-muted-foreground mb-6 max-w-md">
@@ -92,11 +125,11 @@ const Services = () => {
             </p>
             <button 
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-xl font-medium hover:bg-primary/90 transition-colors shadow-medium hover:shadow-large"
+              className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-xl font-medium hover:bg-primary/90 transition-all duration-300 shadow-medium hover:shadow-large hover:scale-105 group/btn"
             >
-              Get Started Today
+              <span className="group-hover/btn:animate-pulse">Get Started Today</span>
             </button>
-          </Card>
+          </div>
         </div>
       </div>
     </section>
